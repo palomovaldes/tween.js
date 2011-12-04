@@ -86,7 +86,8 @@ var TWEEN = TWEEN || ( function () {
 		update: function (_time) {
 
 			i = 0; num_tweens = tweens.length;
-			var time = _time || Date.now();
+			var cd = new Date();
+			var time = _time || cd.getTime();
 
 			while ( i < num_tweens ) {
 
@@ -159,9 +160,9 @@ TWEEN.Tween = function ( object ) {
 	this.start = function (_time) {
 
 		TWEEN.add( this );
-
-		_startTime = _time ? _time + _delayTime : Date.now() + _delayTime;
-
+		var cd = new Date();
+		_startTime = _time ? _time + _delayTime : cd.getTime() + _delayTime;
+		
 		for ( var property in _valuesEnd ) {
 
 			// Again, prevent dealing with null values
